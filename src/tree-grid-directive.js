@@ -83,10 +83,11 @@
             expandOn        : '=',
             onSelect        : '&',
             initialSelection: '@',
-            treeControl     : '='
+            treeControl     : '=',
+            indent          : '='
           },
           link       : function (scope, element, attrs) {
-            var error, expandingProperty, expand_all_parents, expand_level, for_all_ancestors, for_each_branch, get_parent, n, on_treeData_change, select_branch, selected_branch, tree;
+            var error, expandingProperty, expand_all_parents, expand_level, for_all_ancestors, for_each_branch, get_parent, n, on_treeData_change, select_branch, selected_branch, tree, indent;
 
             error = function (s) {
               console.log('ERROR:' + s);
@@ -99,6 +100,8 @@
             attrs.iconLeaf = attrs.iconLeaf ? attrs.iconLeaf : 'icon-file  glyphicon glyphicon-file  fa fa-file';
             attrs.expandLevel = attrs.expandLevel ? attrs.expandLevel : '3';
             expand_level = parseInt(attrs.expandLevel, 10);
+            attrs.indent = attrs.indent ? attrs.indent : '20';
+            indent = parseInt(attrs.indent, 10);
 
             if (!scope.treeData) {
               alert('No data was defined for the tree, please define treeData!');
@@ -284,10 +287,10 @@
                 }
               });
               add_branch_to_list = function (level, branch, visible) {
-                var child, child_visible, tree_icon, _i, _len, _ref, _results, indent;
+                var child, child_visible, tree_icon, _i, _len, _ref, _results, cIndent;
                 if (level != 1)
                   for (var i = 1 ; i<level; i++) {
-                    indent += 20;
+                    cIndent += indent;
                   }
                 if (branch.expanded == null) {
                   branch.expanded = false;
