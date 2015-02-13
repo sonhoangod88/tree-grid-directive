@@ -287,7 +287,7 @@
                 }
               });
               add_branch_to_list = function (level, branch, visible) {
-                var child, child_visible, tree_icon, _i, _len, _ref, _results, cIndent;
+                var child, child_visible, tree_icon, _i, _len, _ref, _results, cIndent = 0;
                 if (level != 1)
                   for (var i = 1 ; i<level; i++) {
                     cIndent += indent;
