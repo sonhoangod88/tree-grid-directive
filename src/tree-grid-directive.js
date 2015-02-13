@@ -284,7 +284,11 @@
                 }
               });
               add_branch_to_list = function (level, branch, visible) {
-                var child, child_visible, tree_icon, _i, _len, _ref, _results;
+                var child, child_visible, tree_icon, _i, _len, _ref, _results, indent;
+                if (level != 1)
+                  for (var i = 1 ; i<level; i++) {
+                    indent += 20;
+                  }
                 if (branch.expanded == null) {
                   branch.expanded = false;
                 }
@@ -301,6 +305,7 @@
                 scope.tree_rows.push({
                   level    : level,
                   branch   : branch,
+                  indent   : indent + 'px',
                   label    : branch[expandingProperty],
                   tree_icon: tree_icon,
                   visible  : visible
