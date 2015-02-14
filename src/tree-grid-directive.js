@@ -84,7 +84,21 @@
             onSelect        : '&',
             initialSelection: '@',
             treeControl     : '=',
-            indent          : '='
+            indent          : '=',
+            add             : '=',
+            edit            : '&'
+          },
+          controller: function($scope) {
+            $scope.add_node = function(parent_id) {
+              $scope.add(parent_id);
+            };
+            $scope.edit_node = function(zid) {
+              $scope.edit(zid);
+            };
+            $scope.toggleExpand = function ($event, row) {
+              row.branch.expanded = !row.branch.expanded;
+              $event.stopPropagation();
+            };
           },
           link       : function (scope, element, attrs) {
             var error, expandingProperty, expand_all_parents, expand_level, for_all_ancestors, for_each_branch, get_parent, n, on_treeData_change, select_branch, selected_branch, tree, indent;
@@ -308,7 +322,7 @@
                 scope.tree_rows.push({
                   level    : level,
                   branch   : branch,
-                  indent   : indent + 'px',
+                  indent   : cIndent + 'px',
                   label    : branch[expandingProperty],
                   tree_icon: tree_icon,
                   visible  : visible
