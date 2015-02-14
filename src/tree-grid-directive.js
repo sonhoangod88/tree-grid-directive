@@ -97,8 +97,9 @@
              *   <i class="glyphicon glyphicon-plus" ng-click="add(row.branch.zid)"></i>
              * </td>
              */
-            $scope.add_node = function(parent_id) {
+            $scope.add_node = function($event, parent_id) {
               $scope.add(parent_id);
+              $event.stopPropagation();
             };
             /**
              * [edit_node Edit a node]
