@@ -89,12 +89,31 @@
             edit            : '&'
           },
           controller: function($scope) {
+            /**
+             * [add_node Add a node handle by function match from controller]
+             * @param {[string]} parent_id
+             * @example
+             * <td class="small-1 text-center">
+             *   <i class="glyphicon glyphicon-plus" ng-click="add(row.branch.zid)"></i>
+             * </td>
+             */
             $scope.add_node = function(parent_id) {
               $scope.add(parent_id);
             };
+            /**
+             * [edit_node Edit a node]
+             * @param  {[string]} zid [id of node]
+             * @return {[type]}     [description]
+             */
             $scope.edit_node = function(zid) {
               $scope.edit(zid);
             };
+            /**
+             * [toggleExpand stop match function click from parent if have]
+             * @param  {[type]} $event [description]
+             * @param  {[object]} row    [description]
+             * @return {[type]}        [description]
+             */
             $scope.toggleExpand = function ($event, row) {
               row.branch.expanded = !row.branch.expanded;
               $event.stopPropagation();
