@@ -86,7 +86,7 @@
             treeControl     : '=',
             indent          : '=',
             add             : '=',
-            edit            : '&'
+            edit            : '='
           },
           controller: function($scope) {
             /**
